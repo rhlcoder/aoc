@@ -21,8 +21,12 @@ func main() {
 	i, err := typecasting.StringSliceToInt(s)
 	errorhandling.CheckError(err, typecasting.ErrTypeConversion)
 
-	x, y, it, err := accounting.SumObjetive(i, objetive)
+	x, y, it, err := accounting.SumPair(i, objetive)
 	errorhandling.CheckError(err, accounting.ErrNoPairFound)
 
-	log.Printf("Took %d iterations: %d + %d = %d. And its product is: %d", it, x, y, objetive, x*y)
+	tx, ty, tz, itt, err := accounting.SumTern(i, objetive)
+	errorhandling.CheckError(err, accounting.ErrNoPairFound)
+
+	log.Printf("Pair %d iterations: %d + %d = %d. And its product is: %d", it, x, y, objetive, x*y)
+	log.Printf("Tern %d iterations: %d + %d + %d = %d. And its product is: %d", itt, tx, ty, tz, objetive, tx*ty*tz)
 }
